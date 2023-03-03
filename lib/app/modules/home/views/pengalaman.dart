@@ -1,0 +1,157 @@
+import 'package:dr1bclone/app/routes/app_pages.dart';
+import 'package:dr1bclone/app/services/services.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+Container experience(BuildContext context) {
+  double height = getHeight(context) / 2;
+  return Container(
+    height: height <= 250 ? 250 : height,
+    decoration: const BoxDecoration(color: Colors.yellow),
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            isi['experience']!['title'].toUpperCase(),
+            style: fontGoogle(
+              fontSize: responsive(
+                mobile: 20.0,
+                desktop: 30.0,
+              ),
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 170,
+            child: ListView.builder(
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              itemCount: isi['experience']!['subtitle'].length,
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                Map<String, dynamic> porto =
+                    isi['experience']!['subtitle']![index];
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    width: 250,
+                    child: InkWell(
+                      onTap: () => Get.toNamed(
+                          '${Routes.PORTFOLIO}?name=${porto['nama']}'),
+                      child: AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              Image.asset(
+                                porto['logo']!,
+                                fit: BoxFit.cover,
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [Colors.black, Colors.transparent],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ListTile(
+                                      leading: CircleAvatar(
+                                        backgroundImage: AssetImage(
+                                          porto['logo']!,
+                                        ),
+                                      ),
+                                      subtitle: Text(
+                                        porto['deskripsi'],
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: fontGoogle(
+                                          color: Colors.white,
+                                          fontSize: responsive(
+                                            mobile: 8.0,
+                                            desktop: 12.0,
+                                          ),
+                                        ),
+                                      ),
+                                      title: Text(
+                                        porto['nama']!,
+                                        style: fontGoogle(
+                                          color: Colors.white,
+                                          fontSize: responsive(
+                                            mobile: 10.0,
+                                            desktop: 14.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          decoration: const BoxDecoration(
+                                            color: Color.fromARGB(
+                                              207,
+                                              255,
+                                              255,
+                                              255,
+                                            ),
+                                            borderRadius: BorderRadius.only(
+                                              topRight: Radius.circular(
+                                                10,
+                                              ),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              IconButton(
+                                                tooltip: 'android',
+                                                onPressed: () => launcher(
+                                                    porto['url_android']),
+                                                icon: const Icon(
+                                                  Icons.android,
+                                                  color: Colors.green,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              IconButton(
+                                                tooltip: 'website',
+                                                onPressed: () => launcher(
+                                                    porto['url_website']),
+                                                icon: const Icon(
+                                                  Icons.web_outlined,
+                                                  color: Colors.green,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
