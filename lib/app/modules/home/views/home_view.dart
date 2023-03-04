@@ -58,11 +58,11 @@ class HomeView extends GetView<HomeController> {
                 index: 5,
                 child: portofolio(context),
               ),
-              // AutoScrollTag(
-              //     key: const ValueKey<int>(6),
-              //     controller: controller.autoScrollController,
-              //     index: 6,
-              //     child: closing(context)),
+              AutoScrollTag(
+                  key: const ValueKey<int>(6),
+                  controller: controller.autoScrollController,
+                  index: 6,
+                  child: closing(context)),
             ],
           ),
           appBarButton(),

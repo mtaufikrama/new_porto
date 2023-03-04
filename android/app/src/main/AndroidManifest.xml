@@ -1,9 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dr1bclone">
    <application
-        android:label="dr1bclone"
+        android:label="MTR Porto"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/icon_app">
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -54,6 +54,18 @@ class PortfolioView extends GetView<PortfolioController> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Text(
+                    porto['deskripsi'].toUpperCase(),
+                    style: fontGoogle(
+                      color: porto['color']['second'] as Color,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
                 SizedBox(
                   height: 100,
                   child: AnimationLimiter(
@@ -142,7 +154,7 @@ class PortfolioView extends GetView<PortfolioController> {
                           ),
                         ),
                         child: Text(
-                          'deskripsi'.toUpperCase(),
+                          'purpose'.toUpperCase(),
                           style: fontGoogle(
                             color: porto['color']['second'] as Color,
                             fontSize: 25,
@@ -154,7 +166,7 @@ class PortfolioView extends GetView<PortfolioController> {
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
                         child: Text(
-                          (porto['deskripsi'] as String),
+                          (porto['tujuan'] as String),
                           style: fontGoogle(
                             fontSize: 20,
                             color: Colors.white,
@@ -181,7 +193,7 @@ class PortfolioView extends GetView<PortfolioController> {
                           ),
                         ),
                         child: Text(
-                          'Fitur'.toUpperCase(),
+                          'features'.toUpperCase(),
                           style: fontGoogle(
                             color: porto['color']['second'] as Color,
                             fontSize: 25,

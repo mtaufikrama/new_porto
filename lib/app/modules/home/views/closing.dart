@@ -13,7 +13,7 @@ Container closing(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            isi['closing']!['title'].toUpperCase(),
+            isi['portofolio']!['title'].toUpperCase(),
             style: fontGoogle(
               fontSize: responsive(
                 mobile: 20.0,

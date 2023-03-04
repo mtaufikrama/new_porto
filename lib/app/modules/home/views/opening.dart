@@ -82,7 +82,7 @@ SizedBox openingPage(BuildContext context) {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 15,
                     ),
                     ElevatedButton.icon(
                       onPressed: iconText,
@@ -100,7 +100,7 @@ SizedBox openingPage(BuildContext context) {
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 15,
                     ),
                     Tooltip(
                       waitDuration: const Duration(milliseconds: 300),
