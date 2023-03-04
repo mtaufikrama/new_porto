@@ -24,6 +24,7 @@ class ImagepageView extends GetView {
         backgroundColor: Colors.transparent,
         body: Center(
           child: responsive(
+            context,
             mobile: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,

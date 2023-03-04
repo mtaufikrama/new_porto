@@ -15,6 +15,7 @@ Container certificate(BuildContext context) {
             style: fontGoogle(
               color: Colors.white,
               fontSize: responsive(
+                context,
                 mobile: 20.0,
                 desktop: 30.0,
               ),
@@ -66,6 +67,7 @@ Container certificate(BuildContext context) {
                                   style: fontGoogle(
                                     color: Colors.white,
                                     fontSize: responsive(
+                                      context,
                                       mobile: 10.0,
                                       desktop: 14.0,
                                     ),

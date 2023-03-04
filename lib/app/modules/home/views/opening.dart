@@ -24,22 +24,21 @@ SizedBox openingPage(BuildContext context) {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              RepaintBoundary(
-                child: Image.asset(
-                  Foto.fotoprofil,
-                  width: responsive(
-                    mobile: 225.0,
-                    desktop: 300.0,
-                  ),
-                  fit: BoxFit.fill,
+              Image.asset(
+                Foto.fotoprofil,
+                width: responsive(
+                  context,
+                  mobile: 225.0,
+                  desktop: 300.0,
                 ),
+                fit: BoxFit.fill,
               ),
               const SizedBox(
                 height: 15,
               ),
               ListView.builder(
                 addAutomaticKeepAlives: false,
-                itemCount: bio.length,
+                itemCount: bio(context).length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (_, index) {
@@ -48,11 +47,11 @@ SizedBox openingPage(BuildContext context) {
                       isRepeatingAnimation: false,
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          bio[index]['nama'] as String,
+                          bio(context)[index]['nama'] as String,
                           curve: Curves.linear,
                           textAlign: TextAlign.center,
                           speed: const Duration(milliseconds: 150),
-                          textStyle: bio[index]['style'] as TextStyle,
+                          textStyle: bio(context)[index]['style'] as TextStyle,
                         ),
                       ],
                     ),
@@ -85,7 +84,7 @@ SizedBox openingPage(BuildContext context) {
                       width: 15,
                     ),
                     ElevatedButton.icon(
-                      onPressed: iconText,
+                      onPressed: () => iconText(context),
                       icon: const Icon(
                         Icons.mark_as_unread_sharp,
                         size: 20.0,
@@ -137,7 +136,7 @@ SizedBox openingPage(BuildContext context) {
   );
 }
 
-void iconText() async {
+void iconText(BuildContext context) async {
   Get.defaultDialog(
     title: 'Contact Me'.toUpperCase(),
     titleStyle: fontGoogle(fontSize: 25),
@@ -146,6 +145,7 @@ void iconText() async {
         Lottie.asset(
           'assets/lottie/contact.json',
           height: responsive(
+            context,
             mobile: 125.0,
             desktop: 150.0,
           ),
@@ -168,10 +168,12 @@ void iconText() async {
                         e['images']!,
                         height: e['name'] == 'Gmail'
                             ? responsive(
+                                context,
                                 mobile: 25.0,
                                 desktop: 30.0,
                               )
                             : responsive(
+                                context,
                                 mobile: 30.0,
                                 desktop: 35.0,
                               ),

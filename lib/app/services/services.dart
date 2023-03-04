@@ -1,19 +1,19 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-responsive({
+responsive(
+  BuildContext context, {
   required dynamic mobile,
   required dynamic desktop,
   dynamic tablet,
   dynamic iOS,
   dynamic macOS,
 }) {
-  final String orientation = MediaQuery.of(Get.context!).orientation.name;
-  final double width = Get.width;
+  final String orientation = MediaQuery.of(context).orientation.name;
+  final double width = MediaQuery.of(context).size.width;
   if (kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
     if (width <= 850.toDouble()) {
       return mobile;
@@ -90,40 +90,43 @@ TextStyle fontGoogle({
   );
 }
 
-List bio = <Map<String, dynamic>>[
-  {
-    'nama': 'Muhammad Taufik Ramadhan',
-    'style': fontGoogle(
-      fontSize: responsive(
-        mobile: 20.0,
-        desktop: 30.0,
-      ),
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-  },
-  {
-    'nama': 'Flutter Developer',
-    'style': fontGoogle(
-      fontSize: responsive(
-        mobile: 17.0,
-        desktop: 27.0,
-      ),
-      fontWeight: FontWeight.bold,
-      color: Colors.yellow,
-    ),
-  },
-  {
-    'nama': 'Android, Website and Desktop',
-    'style': fontGoogle(
-      fontSize: responsive(
-        mobile: 17.0,
-        desktop: 27.0,
-      ),
-      color: Colors.yellow,
-    ),
-  }
-];
+List bio(BuildContext context) => <Map<String, dynamic>>[
+      {
+        'nama': 'Muhammad Taufik Ramadhan',
+        'style': fontGoogle(
+          fontSize: responsive(
+            context,
+            mobile: 20.0,
+            desktop: 30.0,
+          ),
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+      },
+      {
+        'nama': 'Flutter Developer',
+        'style': fontGoogle(
+          fontSize: responsive(
+            context,
+            mobile: 17.0,
+            desktop: 27.0,
+          ),
+          fontWeight: FontWeight.bold,
+          color: Colors.yellow,
+        ),
+      },
+      {
+        'nama': 'Android, Website and Desktop',
+        'style': fontGoogle(
+          fontSize: responsive(
+            context,
+            mobile: 17.0,
+            desktop: 27.0,
+          ),
+          color: Colors.yellow,
+        ),
+      }
+    ];
 
 Map<String, Map<String, dynamic>> isi = {
   'about': {
@@ -266,14 +269,14 @@ final listPortofolio = <Map<String, dynamic>>[
   },
   {
     'nama': 'Crofflite',
-    'logo': 'assets/portofolio/crofflite.jpg',
+    'logo': 'assets/portofolio/crofflite.png',
     'frame': 'assets/portofolio/frame_crofflite.png',
     'color': {
       'primary': const Color.fromARGB(255, 0, 6, 183),
       'second': const Color.fromRGBO(0, 16, 71, 1),
     },
     'tujuan':
-        'MeCrypt aims to allow users to simulate crypto currency transactions before making actual transactions.',
+        'MeCrypt aims to allow users to simulate cryptocurrency transactions before making actual transactions.',
     'team': [
       {
         'image': 'assets/portofolio/taufik.png',

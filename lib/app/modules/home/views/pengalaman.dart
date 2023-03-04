@@ -16,6 +16,7 @@ Container experience(BuildContext context) {
             isi['experience']!['title'].toUpperCase(),
             style: fontGoogle(
               fontSize: responsive(
+                context,
                 mobile: 20.0,
                 desktop: 30.0,
               ),
@@ -77,6 +78,7 @@ Container experience(BuildContext context) {
                                         style: fontGoogle(
                                           color: Colors.white,
                                           fontSize: responsive(
+                                            context,
                                             mobile: 8.0,
                                             desktop: 12.0,
                                           ),
@@ -87,6 +89,7 @@ Container experience(BuildContext context) {
                                         style: fontGoogle(
                                           color: Colors.white,
                                           fontSize: responsive(
+                                            context,
                                             mobile: 10.0,
                                             desktop: 14.0,
                                           ),

@@ -3,7 +3,7 @@
    <application
         android:label="MTR Porto"
         android:name="${applicationName}"
-        android:icon="@mipmap/icon_app">
+        android:icon="@mipmap/lauch_icon_app">
         <activity
             android:name=".MainActivity"
             android:exported="true"

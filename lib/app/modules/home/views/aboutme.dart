@@ -16,6 +16,7 @@ Container aboutMe(BuildContext context) {
           (isi['about']!['title'] as String).toUpperCase(),
           style: fontGoogle(
             fontSize: responsive(
+              context,
               mobile: 20.0,
               desktop: 30.0,
             ),
@@ -34,6 +35,7 @@ Container aboutMe(BuildContext context) {
           isi['about']!['subtitle'] as String,
           style: fontGoogle(
             fontSize: responsive(
+              context,
               mobile: 15.0,
               desktop: 20.0,
             ),

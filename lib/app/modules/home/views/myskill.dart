@@ -40,6 +40,7 @@ Expanded pieChart(
               (isi['${hardOrsoft}_skill']!['title'] as String).toUpperCase(),
               style: fontGoogle(
                 fontSize: responsive(
+                  context,
                   mobile: 20.0,
                   desktop: 30.0,
                 ),

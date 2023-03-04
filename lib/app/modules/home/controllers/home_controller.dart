@@ -1,4 +1,11 @@
 // import 'package:flutter/material.dart';
+import 'package:dr1bclone/app/modules/home/views/aboutme.dart';
+import 'package:dr1bclone/app/modules/home/views/certificate.dart';
+import 'package:dr1bclone/app/modules/home/views/closing.dart';
+import 'package:dr1bclone/app/modules/home/views/myskill.dart';
+import 'package:dr1bclone/app/modules/home/views/opening.dart';
+import 'package:dr1bclone/app/modules/home/views/pengalaman.dart';
+import 'package:dr1bclone/app/modules/home/views/portofolio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 // import 'package:scroll_to_id/scroll_to_id.dart';
@@ -20,6 +27,16 @@ class HomeController extends GetxController {
       duration: const Duration(seconds: 1),
     );
   }
+
+  List<Widget> listWidget(BuildContext context) => [
+        openingPage(context),
+        aboutMe(context),
+        mySkill(context),
+        certificate(context),
+        experience(context),
+        portofolio(context),
+        closing(context),
+      ];
 
   final List<Map<String, dynamic>> buttonAppBar = [
     {
