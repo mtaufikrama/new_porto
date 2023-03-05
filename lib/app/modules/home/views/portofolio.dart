@@ -3,6 +3,10 @@ import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+import '../../../data/screen/map_apps.dart';
+
 Container portofolio(BuildContext context) {
   double height = getHeight(context) / 2;
   return Container(
@@ -14,7 +18,7 @@ Container portofolio(BuildContext context) {
         children: [
           Text(
             isi['portofolio']!['title'].toUpperCase(),
-            style: fontGoogle(
+            style: Font.regular(
               fontSize: responsive(
                 context,
                 mobile: 20.0,
@@ -49,7 +53,7 @@ Container portofolio(BuildContext context) {
                             fit: StackFit.expand,
                             children: [
                               Container(
-                                color: const Color.fromARGB(255, 217, 0, 255),
+                                color: porto['color']['primary'],
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 20),
                                   child: Image.asset(
@@ -80,7 +84,7 @@ Container portofolio(BuildContext context) {
                                         porto['deskripsi'],
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                        style: fontGoogle(
+                                        style: Font.regular(
                                           color: Colors.white,
                                           fontSize: responsive(
                                             context,
@@ -91,7 +95,7 @@ Container portofolio(BuildContext context) {
                                       ),
                                       title: Text(
                                         porto['nama']!,
-                                        style: fontGoogle(
+                                        style: Font.regular(
                                           color: Colors.white,
                                           fontSize: responsive(
                                             context,

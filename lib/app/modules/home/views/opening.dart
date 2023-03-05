@@ -1,4 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
 import '../controllers/home_controller.dart';
 import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +40,7 @@ SizedBox openingPage(BuildContext context) {
               ),
               ListView.builder(
                 addAutomaticKeepAlives: false,
-                itemCount: bio(context).length,
+                itemCount: controller.bio(context).length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (_, index) {
@@ -47,11 +49,12 @@ SizedBox openingPage(BuildContext context) {
                       isRepeatingAnimation: false,
                       animatedTexts: [
                         TypewriterAnimatedText(
-                          bio(context)[index]['nama'] as String,
+                          controller.bio(context)[index]['nama'] as String,
                           curve: Curves.linear,
                           textAlign: TextAlign.center,
                           speed: const Duration(milliseconds: 150),
-                          textStyle: bio(context)[index]['style'] as TextStyle,
+                          textStyle: controller.bio(context)[index]['style']
+                              as TextStyle,
                         ),
                       ],
                     ),
@@ -93,7 +96,7 @@ SizedBox openingPage(BuildContext context) {
                         "HIRE ME",
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
-                        style: fontGoogle(
+                        style: Font.regular(
                           fontSize: 15.0,
                         ),
                       ),
@@ -139,7 +142,7 @@ SizedBox openingPage(BuildContext context) {
 void iconText(BuildContext context) async {
   Get.defaultDialog(
     title: 'Contact Me'.toUpperCase(),
-    titleStyle: fontGoogle(fontSize: 25),
+    titleStyle: Font.regular(fontSize: 25),
     content: Column(
       children: [
         Lottie.asset(
@@ -161,7 +164,7 @@ void iconText(BuildContext context) async {
                   padding: const EdgeInsets.only(top: 15),
                   child: Tooltip(
                     waitDuration: const Duration(milliseconds: 250),
-                    textStyle: fontGoogle(color: Colors.white),
+                    textStyle: Font.regular(color: Colors.white),
                     message: e['name'],
                     child: TextButton(
                       child: Image.asset(

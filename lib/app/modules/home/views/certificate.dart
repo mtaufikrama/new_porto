@@ -1,6 +1,10 @@
 import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+import '../../../data/screen/map_apps.dart';
+
 Container certificate(BuildContext context) {
   double height = getHeight(context) / 2;
   return Container(
@@ -12,7 +16,7 @@ Container certificate(BuildContext context) {
         children: [
           Text(
             (isi['certificate']!['title'] as String).toUpperCase(),
-            style: fontGoogle(
+            style: Font.regular(
               color: Colors.white,
               fontSize: responsive(
                 context,
@@ -64,7 +68,7 @@ Container certificate(BuildContext context) {
                                 ),
                                 title: Text(
                                   skill['title']!,
-                                  style: fontGoogle(
+                                  style: Font.regular(
                                     color: Colors.white,
                                     fontSize: responsive(
                                       context,

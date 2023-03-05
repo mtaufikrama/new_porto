@@ -11,6 +11,9 @@ import 'package:get/get.dart';
 // import 'package:scroll_to_id/scroll_to_id.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+
 class HomeController extends GetxController {
   final autoScrollController = AutoScrollController();
 
@@ -36,6 +39,44 @@ class HomeController extends GetxController {
         experience(context),
         portofolio(context),
         closing(context),
+      ];
+
+  List bio(BuildContext context) => <Map<String, dynamic>>[
+        {
+          'nama': 'Muhammad Taufik Ramadhan',
+          'style': Font.regular(
+            fontSize: responsive(
+              context,
+              mobile: 20.0,
+              desktop: 30.0,
+            ),
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        },
+        {
+          'nama': 'Flutter Developer',
+          'style': Font.regular(
+            fontSize: responsive(
+              context,
+              mobile: 17.0,
+              desktop: 27.0,
+            ),
+            fontWeight: FontWeight.bold,
+            color: Colors.yellow,
+          ),
+        },
+        {
+          'nama': 'Android, Website and Desktop',
+          'style': Font.regular(
+            fontSize: responsive(
+              context,
+              mobile: 17.0,
+              desktop: 27.0,
+            ),
+            color: Colors.yellow,
+          ),
+        }
       ];
 
   final List<Map<String, dynamic>> buttonAppBar = [

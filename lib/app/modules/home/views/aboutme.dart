@@ -1,6 +1,10 @@
 import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+import '../../../data/screen/map_apps.dart';
+
 Container aboutMe(BuildContext context) {
   double height = getHeight(context) / 2;
   return Container(
@@ -14,7 +18,7 @@ Container aboutMe(BuildContext context) {
       children: [
         Text(
           (isi['about']!['title'] as String).toUpperCase(),
-          style: fontGoogle(
+          style: Font.regular(
             fontSize: responsive(
               context,
               mobile: 20.0,
@@ -33,7 +37,7 @@ Container aboutMe(BuildContext context) {
         ),
         Text(
           isi['about']!['subtitle'] as String,
-          style: fontGoogle(
+          style: Font.regular(
             fontSize: responsive(
               context,
               mobile: 15.0,

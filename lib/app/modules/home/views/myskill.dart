@@ -2,6 +2,10 @@ import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+import '../../../data/screen/map_apps.dart';
+
 Row mySkill(BuildContext context) {
   return Row(
     children: [
@@ -38,7 +42,7 @@ Expanded pieChart(
           children: [
             Text(
               (isi['${hardOrsoft}_skill']!['title'] as String).toUpperCase(),
-              style: fontGoogle(
+              style: Font.regular(
                 fontSize: responsive(
                   context,
                   mobile: 20.0,
@@ -71,7 +75,7 @@ Expanded pieChart(
                             child: Center(
                               child: Text(
                                 skill.keys.first,
-                                style: fontGoogle(
+                                style: Font.regular(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w500,
                                   color: secondaryColor,
@@ -95,7 +99,7 @@ Expanded pieChart(
                             chartType: ChartType.ring,
                             ringStrokeWidth: 20,
                             centerText: '${skill.values.first.toString()}%',
-                            centerTextStyle: fontGoogle(
+                            centerTextStyle: Font.regular(
                               color: secondaryColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 15,

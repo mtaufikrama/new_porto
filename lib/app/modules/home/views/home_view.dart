@@ -1,9 +1,8 @@
-import 'dart:js';
-
-import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -59,7 +58,7 @@ class HomeView extends GetView<HomeController> {
                       icon: e['icon'] as ImageIcon,
                       label: Text(
                         e['label'] as String,
-                        style: fontGoogle(
+                        style: Font.regular(
                           fontSize: 17.0,
                         ),
                       ),
@@ -70,7 +69,7 @@ class HomeView extends GetView<HomeController> {
                       icon: e['icon'] as ImageIcon,
                       label: Text(
                         e['label'] as String,
-                        style: fontGoogle(
+                        style: Font.regular(
                           fontSize: 13.0,
                         ),
                       ),

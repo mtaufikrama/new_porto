@@ -3,6 +3,8 @@ import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/dll/responsive.dart';
+
 class ImagepageView extends GetView {
   const ImagepageView({
     Key? key,

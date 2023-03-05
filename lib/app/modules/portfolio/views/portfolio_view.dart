@@ -2,10 +2,12 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:dismissible_page/dismissible_page.dart';
 import 'package:dr1bclone/app/modules/portfolio/controllers/portfolio_controller.dart';
 import 'package:dr1bclone/app/modules/portfolio/views/imagepage_view.dart';
-import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+
+import '../../../data/dll/font.dart';
+import '../../../data/screen/map_apps.dart';
 
 class PortfolioView extends GetView<PortfolioController> {
   const PortfolioView({
@@ -39,26 +41,35 @@ class PortfolioView extends GetView<PortfolioController> {
                       bottom: Radius.circular(20),
                     ),
                   ),
-                  child: BorderedText(
-                    strokeWidth: 1.5,
-                    strokeColor: Colors.black,
-                    child: Text(
-                      (porto['nama'] as String).toUpperCase(),
-                      style: fontGoogle(
-                        letterSpacing: 2,
-                        color: porto['color']['primary'] as Color,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage(porto['logo'] as String),
                       ),
-                      textAlign: TextAlign.center,
-                    ),
+                      BorderedText(
+                        strokeWidth: 1.5,
+                        strokeColor: Colors.black,
+                        child: Text(
+                          (porto['nama'] as String).toUpperCase(),
+                          style: Font.regular(
+                            letterSpacing: 2,
+                            color: porto['color']['primary'] as Color,
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(30),
                   child: Text(
                     porto['deskripsi'].toUpperCase(),
-                    style: fontGoogle(
+                    style: Font.regular(
                       color: porto['color']['second'] as Color,
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -127,35 +138,38 @@ class PortfolioView extends GetView<PortfolioController> {
                     ),
                   ),
                 ),
-                Image.asset(
-                  porto['frame'] as String,
-                  height: MediaQuery.of(context).size.width * 0.3,
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  fit: BoxFit.contain,
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Text(
+                    porto['tujuan'].toUpperCase(),
+                    style: Font.regular(
+                      color: porto['color']['second'] as Color,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30),
+                  child: Image.asset(
+                    porto['frame'] as String,
+                    width: MediaQuery.of(context).size.width * 0.3,
+                  ),
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  margin: const EdgeInsets.all(10),
                   padding: const EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    color: porto['color']['second'] as Color,
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(20),
-                    ),
-                  ),
+                  color: porto['color']['second'] as Color,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15),
-                          ),
-                        ),
+                        color: Colors.white,
                         child: Text(
-                          'purpose'.toUpperCase(),
-                          style: fontGoogle(
+                          'features'.toUpperCase(),
+                          style: Font.regular(
                             color: porto['color']['second'] as Color,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -165,13 +179,34 @@ class PortfolioView extends GetView<PortfolioController> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10),
-                        child: Text(
-                          (porto['tujuan'] as String),
-                          style: fontGoogle(
-                            fontSize: 20,
-                            color: Colors.white,
+                        child: Column(
+                          children: List.generate(
+                            (porto['fitur'] as List<String>).length,
+                            (index) => Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                  child: Text(
+                                    'o',
+                                    style: Font.regular(
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    porto['fitur'][index] as String,
+                                    style: Font.regular(
+                                      fontSize: 20.0,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ),
                     ],
@@ -186,15 +221,10 @@ class PortfolioView extends GetView<PortfolioController> {
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(vertical: 10),
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(15),
-                          ),
-                        ),
+                        color: Colors.white,
                         child: Text(
-                          'features'.toUpperCase(),
-                          style: fontGoogle(
+                          'technology'.toUpperCase(),
+                          style: Font.regular(
                             color: porto['color']['second'] as Color,
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -206,14 +236,14 @@ class PortfolioView extends GetView<PortfolioController> {
                         padding: const EdgeInsets.only(top: 10),
                         child: Column(
                           children: List.generate(
-                            (porto['fitur'] as List<String>).length,
+                            (porto['teknologi'] as List<String>).length,
                             (index) => Row(
                               children: [
                                 SizedBox(
                                   width: 25,
                                   child: Text(
                                     'o',
-                                    style: fontGoogle(
+                                    style: Font.regular(
                                       fontSize: 20.0,
                                       color: Colors.white,
                                     ),
@@ -222,40 +252,8 @@ class PortfolioView extends GetView<PortfolioController> {
                                 ),
                                 Expanded(
                                   child: Text(
-                                    porto['fitur'][index] as String,
-                                    style: fontGoogle(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: List.generate(
-                            (porto['fitur'] as List<String>).length,
-                            (index) => Row(
-                              children: [
-                                SizedBox(
-                                  width: 25,
-                                  child: Text(
-                                    'o',
-                                    style: fontGoogle(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.start,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    porto['fitur'][index] as String,
-                                    style: fontGoogle(
+                                    porto['teknologi'][index] as String,
+                                    style: Font.regular(
                                       fontSize: 20.0,
                                       color: Colors.white,
                                     ),

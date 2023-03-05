@@ -3,8 +3,12 @@ import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/dll/font.dart';
+import '../../../data/dll/responsive.dart';
+import '../../../data/screen/map_apps.dart';
+
 Container experience(BuildContext context) {
-  double height = getHeight(context) / 2;
+  final double height = getHeight(context) / 2;
   return Container(
     height: height <= 250 ? 250 : height,
     decoration: const BoxDecoration(color: Colors.yellow),
@@ -14,7 +18,7 @@ Container experience(BuildContext context) {
         children: [
           Text(
             isi['experience']!['title'].toUpperCase(),
-            style: fontGoogle(
+            style: Font.regular(
               fontSize: responsive(
                 context,
                 mobile: 20.0,
@@ -75,7 +79,7 @@ Container experience(BuildContext context) {
                                         porto['deskripsi'],
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-                                        style: fontGoogle(
+                                        style: Font.regular(
                                           color: Colors.white,
                                           fontSize: responsive(
                                             context,
@@ -86,7 +90,7 @@ Container experience(BuildContext context) {
                                       ),
                                       title: Text(
                                         porto['nama']!,
-                                        style: fontGoogle(
+                                        style: Font.regular(
                                           color: Colors.white,
                                           fontSize: responsive(
                                             context,
