@@ -1,9 +1,8 @@
 import 'package:dismissible_page/dismissible_page.dart';
-import 'package:dr1bclone/app/services/services.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/object_class/porto_class.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../data/dll/responsive.dart';
 
 class ImagepageView extends GetView {
   const ImagepageView({
@@ -12,7 +11,7 @@ class ImagepageView extends GetView {
     required this.tagName,
   }) : super(key: key);
 
-  final Map<String, String> team;
+  final Team team;
   final String tagName;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class ImagepageView extends GetView {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Center(
-          child: responsive(
+          child: responsiveWidget(
             context,
             mobile: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +35,7 @@ class ImagepageView extends GetView {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Image.asset(
-                      team['image']!,
+                      team.image,
                       fit: BoxFit.contain,
                     ),
                   ),
@@ -59,7 +58,7 @@ class ImagepageView extends GetView {
                   child: Hero(
                     tag: tagName,
                     child: Image.asset(
-                      team['image']!,
+                      team.image,
                       fit: BoxFit.contain,
                     ),
                   ),

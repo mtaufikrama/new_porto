@@ -1,9 +1,10 @@
-import 'package:dr1bclone/app/services/services.dart';
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/screen/inti_apps.dart';
 import 'package:flutter/material.dart';
-
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../../../data/screen/map_apps.dart';
+import 'package:get/get.dart';
 
 Container aboutMe(BuildContext context) {
   double height = getHeight(context) / 2;
@@ -16,10 +17,11 @@ Container aboutMe(BuildContext context) {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          (isi['about']!['title'] as String).toUpperCase(),
+        teksLanguage(
+          (isi['about']!.title).toUpperCase(),
+          kodeBahasa: Get.parameters['lang'] ?? 'en',
           style: Font.regular(
-            fontSize: responsive(
+            fontSize: responsiveDouble(
               context,
               mobile: 20.0,
               desktop: 30.0,
@@ -35,10 +37,11 @@ Container aboutMe(BuildContext context) {
           ),
           child: Divider(),
         ),
-        Text(
-          isi['about']!['subtitle'] as String,
+        teksLanguage(
+          isi['about']!.subtitle,
+          kodeBahasa: Get.parameters['lang'] ?? 'en',
           style: Font.regular(
-            fontSize: responsive(
+            fontSize: responsiveDouble(
               context,
               mobile: 15.0,
               desktop: 20.0,

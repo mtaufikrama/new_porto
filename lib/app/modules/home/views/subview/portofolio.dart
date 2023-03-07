@@ -1,25 +1,27 @@
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/object_class/porto_class.dart';
+import 'package:dr1bclone/app/data/screen/inti_apps.dart';
 import 'package:dr1bclone/app/routes/app_pages.dart';
-import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../../../data/screen/map_apps.dart';
-
-Container experience(BuildContext context) {
-  final double height = getHeight(context) / 2;
+Container portofolio(BuildContext context) {
+  double height = getHeight(context) / 2;
   return Container(
     height: height <= 250 ? 250 : height,
-    decoration: const BoxDecoration(color: Colors.yellow),
+    decoration: const BoxDecoration(color: Color.fromARGB(255, 103, 80, 164)),
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            isi['experience']!['title'].toUpperCase(),
+          teksLanguage(
+            isi['portofolio']!.title.toUpperCase(),
+            kodeBahasa: Get.parameters['lang'] ?? 'en',
             style: Font.regular(
-              fontSize: responsive(
+              fontSize: responsiveDouble(
                 context,
                 mobile: 20.0,
                 desktop: 30.0,
@@ -31,21 +33,21 @@ Container experience(BuildContext context) {
           SizedBox(
             height: 170,
             child: ListView.builder(
-              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-              itemCount: isi['experience']!['subtitle'].length,
+              itemCount: (isi['portofolio']!.subtitle as List).length,
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                Map<String, dynamic> porto =
-                    isi['experience']!['subtitle']![index];
+                Portfolio porto = isi['portofolio']!.subtitle![index];
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: SizedBox(
                     width: 250,
                     child: InkWell(
-                      onTap: () => Get.toNamed(
-                          '${Routes.PORTFOLIO}?name=${porto['nama']}'),
+                      onTap: () => Get.toNamed(Routes.PORTFOLIO, parameters: {
+                        'id': index.toString(),
+                        'lang': Get.parameters['lang'] ?? 'en',
+                      }),
                       child: AspectRatio(
                         aspectRatio: 16 / 9,
                         child: ClipRRect(
@@ -53,9 +55,15 @@ Container experience(BuildContext context) {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              Image.asset(
-                                porto['logo']!,
-                                fit: BoxFit.cover,
+                              Container(
+                                color: porto.primaryColor,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 20),
+                                  child: Image.asset(
+                                    porto.frame,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                               ),
                               Container(
                                 decoration: const BoxDecoration(
@@ -72,27 +80,31 @@ Container experience(BuildContext context) {
                                     ListTile(
                                       leading: CircleAvatar(
                                         backgroundImage: AssetImage(
-                                          porto['logo']!,
+                                          porto.logo,
                                         ),
                                       ),
-                                      subtitle: Text(
-                                        porto['deskripsi'],
+                                      subtitle: teksLanguage(
+                                        porto.deskripsi,
+                                        kodeBahasa:
+                                            Get.parameters['lang'] ?? 'en',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Font.regular(
                                           color: Colors.white,
-                                          fontSize: responsive(
+                                          fontSize: responsiveDouble(
                                             context,
                                             mobile: 8.0,
                                             desktop: 12.0,
                                           ),
                                         ),
                                       ),
-                                      title: Text(
-                                        porto['nama']!,
+                                      title: teksLanguage(
+                                        porto.nama,
+                                        kodeBahasa:
+                                            Get.parameters['lang'] ?? 'en',
                                         style: Font.regular(
                                           color: Colors.white,
-                                          fontSize: responsive(
+                                          fontSize: responsiveDouble(
                                             context,
                                             mobile: 10.0,
                                             desktop: 14.0,
@@ -120,8 +132,8 @@ Container experience(BuildContext context) {
                                             children: [
                                               IconButton(
                                                 tooltip: 'android',
-                                                onPressed: () => launcher(
-                                                    porto['url_android']),
+                                                onPressed: () =>
+                                                    launcher(porto.urlAndroid),
                                                 icon: const Icon(
                                                   Icons.android,
                                                   color: Colors.green,
@@ -130,8 +142,8 @@ Container experience(BuildContext context) {
                                               ),
                                               IconButton(
                                                 tooltip: 'website',
-                                                onPressed: () => launcher(
-                                                    porto['url_website']),
+                                                onPressed: () =>
+                                                    launcher(porto.urlWebsite),
                                                 icon: const Icon(
                                                   Icons.web_outlined,
                                                   color: Colors.green,

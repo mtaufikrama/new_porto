@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
 
-import 'local_storage.dart';
-
-Future<String> translates(String text, {String? to}) async {
+Future<String> translates(
+  String text, {
+  String? to,
+  required String kodeBahasa,
+}) async {
   String translate;
   try {
-    var translates = await GoogleTranslator()
-        .translate(text, to: to ?? Storages.getkodeBahasa);
+    var translates =
+        await GoogleTranslator().translate(text, to: to ?? kodeBahasa);
     translate = translates.text;
   } catch (e) {
     translate = text;
@@ -17,23 +19,30 @@ Future<String> translates(String text, {String? to}) async {
 
 FutureBuilder<String> translateTeks(
   String text, {
+  required String kodeBahasa,
   required TextStyle style,
   TextAlign? textAlign,
+  int? maxLines,
+  TextOverflow? overflow,
 }) {
   return FutureBuilder<String>(
-    future: translates(text),
+    future: translates(text, kodeBahasa: kodeBahasa),
     builder: (context, snapshot) {
       if (snapshot.hasData && snapshot.data != null) {
         return Text(
-          snapshot.data!.toUpperCase(),
+          snapshot.data!,
           style: style,
           textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: overflow,
         );
       } else {
         return Text(
-          text.toUpperCase(),
+          text,
           style: style,
           textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: overflow,
         );
       }
     },
@@ -42,19 +51,26 @@ FutureBuilder<String> translateTeks(
 
 Widget teksLanguage(
   String text, {
+  required String kodeBahasa,
   required TextStyle style,
   TextAlign? textAlign,
+  int? maxLines,
+  TextOverflow? overflow,
 }) {
-  String kodeBahasa = Storages.getkodeBahasa;
-  return kodeBahasa == 'id'
+  return kodeBahasa == 'en'
       ? Text(
-          text.toUpperCase(),
+          text,
           style: style,
           textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: overflow,
         )
       : translateTeks(
-          text.toUpperCase(),
+          text,
+          kodeBahasa: kodeBahasa,
           style: style,
           textAlign: textAlign,
+          maxLines: maxLines,
+          overflow: overflow,
         );
 }

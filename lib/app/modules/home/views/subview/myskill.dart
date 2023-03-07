@@ -1,10 +1,11 @@
-import 'package:dr1bclone/app/services/services.dart';
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/screen/inti_apps.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pie_chart/pie_chart.dart';
-
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../../../data/screen/map_apps.dart';
 
 Row mySkill(BuildContext context) {
   return Row(
@@ -40,10 +41,11 @@ Expanded pieChart(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              (isi['${hardOrsoft}_skill']!['title'] as String).toUpperCase(),
+            teksLanguage(
+              (isi['${hardOrsoft}_skill']!.title).toUpperCase(),
+              kodeBahasa: Get.parameters['lang'] ?? 'en',
               style: Font.regular(
-                fontSize: responsive(
+                fontSize: responsiveDouble(
                   context,
                   mobile: 20.0,
                   desktop: 30.0,
@@ -57,13 +59,13 @@ Expanded pieChart(
               height: 170,
               child: ListView.builder(
                 itemCount:
-                    (isi['${hardOrsoft}_skill']!['subtitle'] as List).length,
+                    (isi['${hardOrsoft}_skill']!.subtitle as List).length,
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (BuildContext context, int index) {
                   Map<String, double> skill =
-                      isi['${hardOrsoft}_skill']!['subtitle']![index];
+                      isi['${hardOrsoft}_skill']!.subtitle![index];
                   return Padding(
                     padding: const EdgeInsets.all(10),
                     child: SizedBox(
@@ -73,8 +75,11 @@ Expanded pieChart(
                           SizedBox(
                             height: 40,
                             child: Center(
-                              child: Text(
+                              child: teksLanguage(
                                 skill.keys.first,
+                                kodeBahasa: hardOrsoft == 'soft'
+                                    ? Get.parameters['lang'] ?? 'en'
+                                    : 'en',
                                 style: Font.regular(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.w500,

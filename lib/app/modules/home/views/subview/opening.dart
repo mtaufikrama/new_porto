@@ -1,24 +1,28 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../controllers/home_controller.dart';
-import 'package:dr1bclone/app/services/services.dart';
+import 'package:dr1bclone/app/data/dll/assets.dart';
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/screen/kontak_data.dart';
+import 'package:dr1bclone/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 SizedBox openingPage(BuildContext context) {
   var controller = Get.put(HomeController());
+  double height = getHeight(context);
   return SizedBox(
     width: getWidth(context),
-    height: getHeight(context) <= 500 ? 500 : getHeight(context),
+    height: height <= 500 ? 500 : height,
     child: Stack(
       children: [
         ClipRRect(
           child: Lottie.asset(
             'assets/lottie/bg1.json',
             width: getWidth(context),
-            height: getHeight(context) <= 500 ? 500 : getHeight(context),
+            height: height <= 500 ? 500 : height,
             fit: BoxFit.fill,
           ),
         ),
@@ -28,7 +32,7 @@ SizedBox openingPage(BuildContext context) {
             children: [
               Image.asset(
                 Foto.fotoprofil,
-                width: responsive(
+                width: responsiveDouble(
                   context,
                   mobile: 225.0,
                   desktop: 300.0,
@@ -68,7 +72,7 @@ SizedBox openingPage(BuildContext context) {
                   children: [
                     Tooltip(
                       waitDuration: const Duration(milliseconds: 300),
-                      message: 'Resume',
+                      message: 'CV',
                       child: InkWell(
                         onTap: () async => await controller.scrollIndex(5),
                         child: CircleAvatar(
@@ -92,8 +96,9 @@ SizedBox openingPage(BuildContext context) {
                         Icons.mark_as_unread_sharp,
                         size: 20.0,
                       ),
-                      label: Text(
+                      label: teksLanguage(
                         "HIRE ME",
+                        kodeBahasa: Get.parameters['lang'] ?? 'en',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: Font.regular(
@@ -141,13 +146,13 @@ SizedBox openingPage(BuildContext context) {
 
 void iconText(BuildContext context) async {
   Get.defaultDialog(
-    title: 'Contact Me'.toUpperCase(),
+    title: ('Contact Me').toUpperCase(),
     titleStyle: Font.regular(fontSize: 25),
     content: Column(
       children: [
         Lottie.asset(
           'assets/lottie/contact.json',
-          height: responsive(
+          height: responsiveDouble(
             context,
             mobile: 125.0,
             desktop: 150.0,
@@ -165,23 +170,23 @@ void iconText(BuildContext context) async {
                   child: Tooltip(
                     waitDuration: const Duration(milliseconds: 250),
                     textStyle: Font.regular(color: Colors.white),
-                    message: e['name'],
+                    message: e.name,
                     child: TextButton(
                       child: Image.asset(
-                        e['images']!,
-                        height: e['name'] == 'Gmail'
-                            ? responsive(
+                        e.image,
+                        height: e.name == 'Gmail'
+                            ? responsiveDouble(
                                 context,
                                 mobile: 25.0,
                                 desktop: 30.0,
                               )
-                            : responsive(
+                            : responsiveDouble(
                                 context,
                                 mobile: 30.0,
                                 desktop: 35.0,
                               ),
                       ),
-                      onPressed: () => launcher(e['url']!),
+                      onPressed: () => launcher(e.url),
                     ),
                   ),
                 ),

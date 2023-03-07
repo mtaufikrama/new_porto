@@ -1,3 +1,4 @@
+import 'package:dr1bclone/app/data/dll/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
@@ -13,7 +14,6 @@ class HomeView extends GetView<HomeController> {
       body: Stack(
         children: [
           ListView(
-            addAutomaticKeepAlives: false,
             controller: controller.autoScrollController,
             children: List.generate(
               controller.listWidget(context).length,
@@ -41,23 +41,24 @@ class HomeView extends GetView<HomeController> {
           children: controller.buttonAppBar
               .map((e) => Padding(
                   padding: const EdgeInsets.all(5),
-                  child: responsive(
+                  child: responsiveWidget(
                     context,
                     mobile: Tooltip(
                       waitDuration: const Duration(milliseconds: 300),
                       message: e['label'] as String,
                       child: ElevatedButton(
                         onPressed: () async =>
-                            await controller.scrollIndex(e['onPressed']),
+                            await controller.scrollIndex(e['index']),
                         child: e['icon'] as ImageIcon,
                       ),
                     ),
                     desktop: ElevatedButton.icon(
                       onPressed: () async =>
-                          await controller.scrollIndex(e['onPressed'] as int),
+                          await controller.scrollIndex(e['index'] as int),
                       icon: e['icon'] as ImageIcon,
-                      label: Text(
+                      label: teksLanguage(
                         e['label'] as String,
+                        kodeBahasa: Get.parameters['lang'] ?? 'en',
                         style: Font.regular(
                           fontSize: 17.0,
                         ),
@@ -65,7 +66,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                     tablet: ElevatedButton.icon(
                       onPressed: () async =>
-                          await controller.scrollIndex(e['onPressed'] as int),
+                          await controller.scrollIndex(e['index'] as int),
                       icon: e['icon'] as ImageIcon,
                       label: Text(
                         e['label'] as String,

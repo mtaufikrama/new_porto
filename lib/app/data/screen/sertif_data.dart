@@ -1,29 +1,30 @@
-import '../../services/services.dart';
+import 'package:dr1bclone/app/data/dll/assets.dart';
+import 'package:dr1bclone/app/data/object_class/certificate_class.dart';
 
-List<Map<String, String>> listCertificate = [
-  {
-    'title': 'MSIB Competency Certificate',
-    'image': Sertif.competency,
-    'logo': Logo.kampusMerdeka,
-  },
-  {
-    'title': 'MSIB Certificate',
-    'image': Sertif.msib,
-    'logo': Logo.kampusMerdeka,
-  },
-  {
-    'title': 'IoT Webinar Certificate',
-    'image': Sertif.iot,
-    'logo': Logo.edspert,
-  },
-  {
-    'title': 'HALO FTI Seminar Certificate',
-    'image': Sertif.halofti,
-    'logo': Logo.bemfti,
-  },
-  {
-    'title': 'Serathon 2.0 Seminar Certificate',
-    'image': Sertif.serathon,
-    'logo': Logo.bemfti,
-  },
+List<Certificate> listCertificate = [
+  Certificate(
+    nama: 'MSIB Competency Certificate',
+    image: Sertif.sertifCompetency,
+    logo: Sertif.kampusMerdeka,
+  ),
+  Certificate(
+    nama: 'MSIB Certificate',
+    image: Sertif.sertifMSIB,
+    logo: Sertif.kampusMerdeka,
+  ),
+  Certificate(
+    nama: 'IoT Webinar Certificate',
+    image: Sertif.sertifIOT,
+    logo: Sertif.edspert,
+  ),
+  Certificate(
+    nama: 'HALO FTI Seminar Certificate',
+    image: Sertif.sertifHaloFTI,
+    logo: Sertif.bemfti,
+  ),
+  Certificate(
+    nama: 'Serathon 2.0 Seminar Certificate',
+    image: Sertif.sertifSerathon,
+    logo: Sertif.bemfti,
+  ),
 ];

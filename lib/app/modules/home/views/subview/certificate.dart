@@ -1,9 +1,11 @@
-import 'package:dr1bclone/app/services/services.dart';
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/object_class/certificate_class.dart';
+import 'package:dr1bclone/app/data/screen/inti_apps.dart';
 import 'package:flutter/material.dart';
-
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../../../data/screen/map_apps.dart';
+import 'package:get/get.dart';
 
 Container certificate(BuildContext context) {
   double height = getHeight(context) / 2;
@@ -14,11 +16,12 @@ Container certificate(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            (isi['certificate']!['title'] as String).toUpperCase(),
+          teksLanguage(
+            (isi['certificate']!.title).toUpperCase(),
+            kodeBahasa: Get.parameters['lang'] ?? 'en',
             style: Font.regular(
               color: Colors.white,
-              fontSize: responsive(
+              fontSize: responsiveDouble(
                 context,
                 mobile: 20.0,
                 desktop: 30.0,
@@ -30,13 +33,12 @@ Container certificate(BuildContext context) {
           SizedBox(
             height: 170,
             child: ListView.builder(
-              itemCount: (isi['certificate']!['subtitle'] as List).length,
+              itemCount: (isi['certificate']!.subtitle as List).length,
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
-                Map<String, String> skill =
-                    isi['certificate']!['subtitle']![index];
+                Certificate skill = isi['certificate']!.subtitle[index];
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: SizedBox(
@@ -49,7 +51,7 @@ Container certificate(BuildContext context) {
                           fit: StackFit.expand,
                           children: [
                             Image.asset(
-                              skill['image']!,
+                              skill.image,
                               fit: BoxFit.fill,
                             ),
                             Container(
@@ -63,14 +65,15 @@ Container certificate(BuildContext context) {
                               child: ListTile(
                                 leading: CircleAvatar(
                                   backgroundImage: AssetImage(
-                                    skill['logo']!,
+                                    skill.logo,
                                   ),
                                 ),
-                                title: Text(
-                                  skill['title']!,
+                                title: teksLanguage(
+                                  skill.nama,
+                                  kodeBahasa: Get.parameters['lang'] ?? 'en',
                                   style: Font.regular(
                                     color: Colors.white,
-                                    fontSize: responsive(
+                                    fontSize: responsiveDouble(
                                       context,
                                       mobile: 10.0,
                                       desktop: 14.0,

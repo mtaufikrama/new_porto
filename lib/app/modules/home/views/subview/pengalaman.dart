@@ -1,25 +1,26 @@
+import 'package:dr1bclone/app/data/dll/font.dart';
+import 'package:dr1bclone/app/data/dll/language.dart';
+import 'package:dr1bclone/app/data/dll/responsive.dart';
+import 'package:dr1bclone/app/data/dll/services.dart';
+import 'package:dr1bclone/app/data/screen/inti_apps.dart';
 import 'package:dr1bclone/app/routes/app_pages.dart';
-import 'package:dr1bclone/app/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../data/dll/font.dart';
-import '../../../data/dll/responsive.dart';
-import '../../../data/screen/map_apps.dart';
-
-Container portofolio(BuildContext context) {
-  double height = getHeight(context) / 2;
+Container experience(BuildContext context) {
+  final double height = getHeight(context) / 2;
   return Container(
     height: height <= 250 ? 250 : height,
-    decoration: const BoxDecoration(color: Color.fromARGB(255, 103, 80, 164)),
+    decoration: const BoxDecoration(color: Colors.yellow),
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            isi['portofolio']!['title'].toUpperCase(),
+          teksLanguage(
+            (isi['experience']!.title).toUpperCase(),
+            kodeBahasa: Get.parameters['lang'] ?? 'en',
             style: Font.regular(
-              fontSize: responsive(
+              fontSize: responsiveDouble(
                 context,
                 mobile: 20.0,
                 desktop: 30.0,
@@ -31,20 +32,21 @@ Container portofolio(BuildContext context) {
           SizedBox(
             height: 170,
             child: ListView.builder(
-              itemCount: isi['portofolio']!['subtitle'].length,
+              keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+              itemCount: (isi['experience']!.subtitle as List).length,
               physics: const BouncingScrollPhysics(),
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 Map<String, dynamic> porto =
-                    isi['portofolio']!['subtitle']![index];
+                    isi['experience']!.subtitle![index];
                 return Padding(
                   padding: const EdgeInsets.all(10),
                   child: SizedBox(
                     width: 250,
                     child: InkWell(
-                      onTap: () => Get.toNamed(Routes.PORTFOLIO,
-                          parameters: {'id': index.toString()}),
+                      onTap: () => Get.toNamed(
+                          '${Routes.PORTFOLIO}?name=${porto['nama']}'),
                       child: AspectRatio(
                         aspectRatio: 16 / 9,
                         child: ClipRRect(
@@ -52,15 +54,9 @@ Container portofolio(BuildContext context) {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              Container(
-                                color: porto['color']['primary'],
-                                child: Padding(
-                                  padding: const EdgeInsets.only(top: 20),
-                                  child: Image.asset(
-                                    porto['frame']!,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
+                              Image.asset(
+                                porto['logo']!,
+                                fit: BoxFit.cover,
                               ),
                               Container(
                                 decoration: const BoxDecoration(
@@ -80,24 +76,28 @@ Container portofolio(BuildContext context) {
                                           porto['logo']!,
                                         ),
                                       ),
-                                      subtitle: Text(
+                                      subtitle: teksLanguage(
                                         porto['deskripsi'],
+                                        kodeBahasa:
+                                            Get.parameters['lang'] ?? 'en',
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: Font.regular(
                                           color: Colors.white,
-                                          fontSize: responsive(
+                                          fontSize: responsiveDouble(
                                             context,
                                             mobile: 8.0,
                                             desktop: 12.0,
                                           ),
                                         ),
                                       ),
-                                      title: Text(
+                                      title: teksLanguage(
                                         porto['nama']!,
+                                        kodeBahasa:
+                                            Get.parameters['lang'] ?? 'en',
                                         style: Font.regular(
                                           color: Colors.white,
-                                          fontSize: responsive(
+                                          fontSize: responsiveDouble(
                                             context,
                                             mobile: 10.0,
                                             desktop: 14.0,
