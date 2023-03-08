@@ -74,7 +74,8 @@ SizedBox openingPage(BuildContext context) {
                       waitDuration: const Duration(milliseconds: 300),
                       message: 'CV',
                       child: InkWell(
-                        onTap: () async => await controller.scrollIndex(5),
+                        onTap: () async => await launcher(
+                            'https://drive.google.com/file/d/1DCzdugrnWfw8quOrsAeP_5Lh2SdXPOWV/view?usp=share_link'),
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           child: Padding(
