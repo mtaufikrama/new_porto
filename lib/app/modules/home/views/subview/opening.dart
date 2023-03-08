@@ -20,7 +20,7 @@ SizedBox openingPage(BuildContext context) {
       children: [
         ClipRRect(
           child: Lottie.asset(
-            'assets/lottie/bg1.json',
+            'assets/lottie/bg.json',
             width: getWidth(context),
             height: height <= 500 ? 500 : height,
             fit: BoxFit.fill,

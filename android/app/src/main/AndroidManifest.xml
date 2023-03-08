@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dr1bclone">
+    package="com.metir.portofolio">
    <application
         android:label="MTR Porto"
         android:name="${applicationName}"
