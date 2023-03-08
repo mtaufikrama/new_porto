@@ -33,7 +33,7 @@ final Map<String, Isi> isi = {
     subtitle: listPortofolio,
   ),
   'kontak': Isi(
-    title: 'Contacts',
+    title: 'Contacts & Social Media',
     subtitle: listKontak,
   ),
 };

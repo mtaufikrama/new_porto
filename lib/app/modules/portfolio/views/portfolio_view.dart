@@ -159,120 +159,126 @@ class PortfolioView extends GetView<PortfolioController> {
                     width: MediaQuery.of(context).size.width * 0.3,
                   ),
                 ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.all(15),
-                  color: porto.secondaryColor,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        color: Colors.white,
-                        child: teksLanguage(
-                          ('features').toUpperCase(),
-                          kodeBahasa: Get.parameters['lang'] ?? 'en',
-                          style: Font.regular(
-                            color: porto.secondaryColor,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                porto.fitur.isEmpty
+                    ? Container()
+                    : Container(
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(15),
+                        color: porto.secondaryColor,
                         child: Column(
-                          children: List.generate(
-                            porto.fitur.length,
-                            (index) => Row(
-                              children: [
-                                SizedBox(
-                                  width: 25,
-                                  child: Text(
-                                    'o',
-                                    style: Font.regular(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.start,
-                                  ),
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              color: Colors.white,
+                              child: teksLanguage(
+                                ('features').toUpperCase(),
+                                kodeBahasa: Get.parameters['lang'] ?? 'en',
+                                style: Font.regular(
+                                  color: porto.secondaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Expanded(
-                                  child: teksLanguage(
-                                    porto.fitur[index],
-                                    kodeBahasa: Get.parameters['lang'] ?? 'en',
-                                    style: Font.regular(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Column(
+                                children: List.generate(
+                                  porto.fitur.length,
+                                  (index) => Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                        child: Text(
+                                          'o',
+                                          style: Font.regular(
+                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: teksLanguage(
+                                          porto.fitur[index],
+                                          kodeBahasa:
+                                              Get.parameters['lang'] ?? 'en',
+                                          style: Font.regular(
+                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  padding: const EdgeInsets.all(15),
-                  color: porto.secondaryColor,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        color: Colors.white,
-                        child: teksLanguage(
-                          ('technology').toUpperCase(),
-                          kodeBahasa: Get.parameters['lang'] ?? 'en',
-                          style: Font.regular(
-                            color: porto.secondaryColor,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                porto.teknologi.isEmpty
+                    ? Container()
+                    : Container(
+                        margin: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(15),
+                        color: porto.secondaryColor,
                         child: Column(
-                          children: List.generate(
-                            porto.teknologi.length,
-                            (index) => Row(
-                              children: [
-                                SizedBox(
-                                  width: 25,
-                                  child: Text(
-                                    'o',
-                                    style: Font.regular(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.start,
-                                  ),
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              color: Colors.white,
+                              child: teksLanguage(
+                                ('technology').toUpperCase(),
+                                kodeBahasa: Get.parameters['lang'] ?? 'en',
+                                style: Font.regular(
+                                  color: porto.secondaryColor,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                Expanded(
-                                  child: teksLanguage(
-                                    porto.teknologi[index],
-                                    kodeBahasa: Get.parameters['lang'] ?? 'en',
-                                    style: Font.regular(
-                                      fontSize: 20.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Column(
+                                children: List.generate(
+                                  porto.teknologi.length,
+                                  (index) => Row(
+                                    children: [
+                                      SizedBox(
+                                        width: 25,
+                                        child: Text(
+                                          'o',
+                                          style: Font.regular(
+                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.start,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: teksLanguage(
+                                          porto.teknologi[index],
+                                          kodeBahasa:
+                                              Get.parameters['lang'] ?? 'en',
+                                          style: Font.regular(
+                                            fontSize: 20.0,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
                 const SizedBox(
                   height: 20,
                 ),

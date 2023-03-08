@@ -127,7 +127,7 @@ class DataPorto {
     primaryColor: Color.fromARGB(255, 0, 188, 241),
     secondaryColor: Color.fromARGB(255, 35, 136, 182),
     tujuan:
-        'Crofflite is designed to help croffle sellers optimize their business and increase efficiency in managing queues and finances every day.',
+        'Bayu aims to try to make the user interface of the by.u application.',
     team: [
       Team(
         image: Porto.taufik,
@@ -137,18 +137,10 @@ class DataPorto {
     ],
     urlAndroid:
         'https://drive.google.com/drive/folders/1lVklQGknaLIJXBsUzKMJjH24OVt66WYK?usp=share_link',
-    urlWebsite: 'https://mecrypt.metir.my.id/',
+    urlWebsite: 'https://bayu.metir.my.id/',
     deskripsi:
-        'Crofflite is an application to help croffle sellers manage their customer queues and daily financial planning.',
-    fitur: [
-      'Has a buyer queue feature that allows croffle sellers to see the number of buyers waiting in the queue.',
-      'Calculates the croffle sellers daily sales turnover based on the sales data entered.',
-      'Has a feature to calculate the total purchases of each buyer, so sellers can easily find out the contribution of each buyer to their sales.',
-      'Sellers can view their overall sales performance and perform further analysis.',
-    ],
-    teknologi: [
-      'Flutter as a framework for developing mobile applications and websites.',
-      'Localstorage as local database.',
-    ],
+        'Bayu is an application that was redesigned from the by.u application.',
+    fitur: [],
+    teknologi: [],
   );
 }

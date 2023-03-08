@@ -171,7 +171,8 @@ void iconText(BuildContext context) async {
                     waitDuration: const Duration(milliseconds: 250),
                     textStyle: Font.regular(color: Colors.white),
                     message: e.name,
-                    child: TextButton(
+                    child: InkWell(
+                      onTap: () async => await launcher(e.url),
                       child: Image.asset(
                         e.image,
                         height: e.name == 'Gmail'
@@ -186,7 +187,6 @@ void iconText(BuildContext context) async {
                                 desktop: 35.0,
                               ),
                       ),
-                      onPressed: () => launcher(e.url),
                     ),
                   ),
                 ),

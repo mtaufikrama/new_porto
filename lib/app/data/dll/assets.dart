@@ -10,14 +10,6 @@ class Sertif {
   static const bemfti = 'assets/logo/bemfti.jpg';
 }
 
-class IconKontak {
-  static const twitter = 'assets/portofolio/avatar/taufik.png';
-  static const github = 'assets/portofolio/avatar/delvy.png';
-  static const youtube = 'assets/portofolio/avatar/roni.png';
-  static const yozi = 'assets/portofolio/avatar/yozi.png';
-  static const bayu = 'assets/portofolio/bayu/bayu.png';
-}
-
 class Porto {
   static const taufik = 'assets/portofolio/avatar/taufik.png';
   static const delvy = 'assets/portofolio/avatar/delvy.png';
